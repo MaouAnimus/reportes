@@ -16,4 +16,6 @@ public interface ReportesRepository extends JpaRepository<Reportes, Integer>{
     Reportes save(Reportes reporte);
         
     List<Reportes> findAll();
+
+    Reportes findById(int id);
 }

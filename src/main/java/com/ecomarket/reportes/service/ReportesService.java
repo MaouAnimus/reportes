@@ -2,6 +2,7 @@ package com.ecomarket.reportes.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,12 @@ public class ReportesService {
 
     public List<Reportes> findAll() {
         return reportesRepository.findAll();    
+    }
+
+
+    public Reportes findById(int id) {
+        // TODO Auto-generated method stub
+        return reportesRepository.findById(id);
     }
     
 }

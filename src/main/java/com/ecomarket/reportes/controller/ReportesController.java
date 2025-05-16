@@ -8,11 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.ecomarket.reportes.model.EncargadoTienda;
 import com.ecomarket.reportes.model.Reportes;
 import com.ecomarket.reportes.service.ReportesService;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -40,6 +41,9 @@ public class ReportesController {
         return reportesService.crearReporte(reporte);
     }
     
-
+    @GetMapping("/{id}")
+    public ResponseEntity<Reportes> getById(@PathVariable int id) {
+        return new ResponseEntity<Reportes>(reportesService.findById(id), HttpStatus.OK);
+    }
 
 }
