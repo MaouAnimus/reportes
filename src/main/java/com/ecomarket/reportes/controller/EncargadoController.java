@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+
+
 
 
 
@@ -32,7 +35,6 @@ public class EncargadoController {
     } else {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-        
     }
     
 
@@ -42,7 +44,7 @@ public class EncargadoController {
         
         EncargadoTienda et = encargadoservice.findById(encargadoTienda.getId_encargado());
         if (et == null) {
-            return new ResponseEntity<>(encargadoservice.crear_encargado(encargadoTienda), HttpStatus.CREATED);
+            return new ResponseEntity<>(encargadoservice.crearencargado(encargadoTienda), HttpStatus.CREATED);
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
@@ -54,5 +56,13 @@ public class EncargadoController {
         return new ResponseEntity<EncargadoTienda>(encargadoservice.findById(id_encargado), HttpStatus.OK);
     }
     
-    
+    @PutMapping("/actualizar/{id}")
+    public ResponseEntity<EncargadoTienda> updateById(@PathVariable int id, @RequestBody EncargadoTienda encargadoTienda) {
+        EncargadoTienda enc = encargadoservice.updateById(id, encargadoTienda);
+        if (enc != null) {
+            return new ResponseEntity<>(enc, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+}
 }

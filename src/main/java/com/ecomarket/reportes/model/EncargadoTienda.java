@@ -1,6 +1,9 @@
 package com.ecomarket.reportes.model;
 
 import jakarta.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +38,8 @@ public class EncargadoTienda {
     @Column(length = 50, nullable = false, unique = true)
     private String email;
 
+    
     @Column(length = 50, nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 }

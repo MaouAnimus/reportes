@@ -18,7 +18,7 @@ public class EncargadoService {
     }
 
     
-    public EncargadoTienda crear_encargado(EncargadoTienda encargadoTienda) {
+    public EncargadoTienda crearencargado(EncargadoTienda encargadoTienda) {
         return encargadoRepository.save(encargadoTienda);    
     }
 
@@ -27,5 +27,33 @@ public class EncargadoService {
         // TODO Auto-generated method stub
         return encargadoRepository.findAll();    
     }
+
+
+    public EncargadoTienda updateById(int id, EncargadoTienda encargado) {
+    EncargadoTienda encargadoExist = encargadoRepository.findById(id);
+    if (encargadoExist != null) {
+        if (encargado.getRut() != null) {
+            encargadoExist.setRut(encargado.getRut());
+        }
+        if (encargado.getNombre() != null) {
+            encargadoExist.setNombre(encargado.getNombre());
+        }
+        if (encargado.getApellido() != null) {
+            encargadoExist.setApellido(encargado.getApellido());
+        }
+        if (encargado.getEmail() != null) {
+            encargadoExist.setEmail(encargado.getEmail());
+        }
+        if (encargado.getPassword() != null) {
+            encargadoExist.setPassword(encargado.getPassword());
+        }
+        encargadoRepository.save(encargadoExist);
+        return encargadoExist;
+    }
+    return null;
+}
+
+
+    
     
 }

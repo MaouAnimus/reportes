@@ -29,5 +29,34 @@ public class ReportesService {
         // TODO Auto-generated method stub
         return reportesRepository.findById(id);
     }
+
+
+    public Reportes updateById(int id, Reportes reporte) {
+        Reportes reporteExist = reportesRepository.findById(id);
+        if (reporteExist != null) {
+            if (reporteExist.getTipo() != null) {
+                reporteExist.setTipo(reporte.getTipo());
+            }
+            if (reporteExist.getFecha() != null) {
+                reporteExist.setFecha(reporte.getFecha());
+            }
+            if (reporteExist.getDescr_report() != null) {
+                reporteExist.setDescr_report(reporte.getDescr_report());
+            }
+            reportesRepository.save(reporteExist);
+            return reporteExist;
+        }
+        return null;    
+    }
+
+
+    public Reportes deleteById(int id) {
+        Reportes reporte = reportesRepository.findById(id);
+        if (reporte != null) {
+            reportesRepository.delete(reporte);
+            return reporte;
+        }
+        return null;
+    }
     
 }

@@ -2,6 +2,7 @@ package com.ecomarket.reportes.model;
 
 import java.time.LocalDate;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,7 +33,7 @@ public class Reportes {
     @Column(nullable = false)
     private LocalDate fecha;
 
-    @Column(length = 250,nullable = false)
+    @Column(length = 350,nullable = false)
     private String descr_report;
 
     @ManyToOne
