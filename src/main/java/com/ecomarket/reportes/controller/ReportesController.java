@@ -43,7 +43,7 @@ public class ReportesController {
         return reportesService.crearReporte(reporte);
     }
     
-    @GetMapping("/id={id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Reportes> getById(@PathVariable int id) {
         return new ResponseEntity<Reportes>(reportesService.findById(id), HttpStatus.OK);
     }

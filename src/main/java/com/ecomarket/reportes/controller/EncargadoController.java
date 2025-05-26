@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
-@RequestMapping("/api/encargados")
+@RequestMapping("/api/encargado")
 public class EncargadoController {
     @Autowired
     private EncargadoService encargadoservice;

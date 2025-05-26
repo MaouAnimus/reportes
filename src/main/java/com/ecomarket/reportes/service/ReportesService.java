@@ -26,7 +26,6 @@ public class ReportesService {
 
 
     public Reportes findById(int id) {
-        // TODO Auto-generated method stub
         return reportesRepository.findById(id);
     }
 

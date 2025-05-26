@@ -24,7 +24,6 @@ public class EncargadoService {
 
 
     public List<EncargadoTienda> findAll() {
-        // TODO Auto-generated method stub
         return encargadoRepository.findAll();    
     }
 
