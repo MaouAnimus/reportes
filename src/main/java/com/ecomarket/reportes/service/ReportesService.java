@@ -20,7 +20,6 @@ public class ReportesService {
     private RestTemplate restTemplate;
 
     public Reportes crearReporte(Reportes reporte) {
-    // Suponiendo que el reporte tiene un getId() que retorna el id del encargado
     String url = "http://localhost:8081/api/usuario/" + reporte.getId();
     EncargadoDTO encargado = restTemplate.getForObject(url, EncargadoDTO.class);
     if (encargado != null) {
