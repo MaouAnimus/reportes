@@ -57,7 +57,6 @@ public class ReportesService {
         return null;    
     }
 
-
     public Reportes deleteById(int id) {
         Reportes reporte = reportesRepository.findById(id);
         if (reporte != null) {
