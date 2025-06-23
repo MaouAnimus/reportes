@@ -1,8 +1,5 @@
 package com.ecomarket.reportes.service;
 
-
-
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.verify;
@@ -97,7 +94,6 @@ public class ReportesServiceTest {
     void testDeleteById() {
         Reportes reporte = new Reportes(1L, "Tipo", LocalDate.of(2025, 6, 20), "Descripción", "correo@test.com", 1L, "Ana");
         when(reportesRepository.findById(1)).thenReturn(reporte);
-
         Reportes resultado = reportesService.deleteById(1);
 
         assertEquals(1L, resultado.getIdReporte());
