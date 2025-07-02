@@ -20,7 +20,7 @@ public class ReportesService {
     private RestTemplate restTemplate;
 
     public Reportes crearReporte(Reportes reporte) {
-    String url = "http://localhost:8081/api/usuario/" + reporte.getId();
+    String url = "http://localhost:8083/api/usuario/" + reporte.getId();
     EncargadoDTO encargado = restTemplate.getForObject(url, EncargadoDTO.class);
     if (encargado != null) {
         reporte.setEmail(encargado.getEmail());
