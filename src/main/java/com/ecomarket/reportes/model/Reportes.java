@@ -38,7 +38,6 @@ public class Reportes {
     @Column(length = 350,nullable = false)
     private String descr_report;
 
-    
     @Column(nullable = false, length = 50)
     private String email;
 

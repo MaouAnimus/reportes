@@ -29,8 +29,8 @@ public class ReportesService {
         reporte.setEmail(encargado.getEmail());
         return reportesRepository.save(reporte);
     }
-    throw new RuntimeException("No se encontró el encargado con ID: " + reporte.getId());
-}
+        throw new RuntimeException("No se encontró el encargado con ID: " + reporte.getId());
+    }
 
 
     public List<Reportes> findAll() {
