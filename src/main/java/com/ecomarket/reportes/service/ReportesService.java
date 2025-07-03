@@ -1,6 +1,7 @@
 package com.ecomarket.reportes.service;
 
 import java.util.List;
+import java.util.Collections;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,12 @@ public class ReportesService {
     String url = "http://localhost:8083/api/usuario/" + reporte.getId();
     EncargadoDTO encargado = restTemplate.getForObject(url, EncargadoDTO.class);
     if (encargado != null) {
+        reporte.setId(encargado.getId());
+        reporte.setNombre(encargado.getNombre());
         reporte.setEmail(encargado.getEmail());
+        return reportesRepository.save(reporte);
     }
-    return reportesRepository.save(reporte);
+    throw new RuntimeException("No se encontró el encargado con ID: " + reporte.getId());
 }
 
 
@@ -40,15 +44,12 @@ public class ReportesService {
     public Reportes updateById(Long id, Reportes reporte) {
         Reportes reporteExist = reportesRepository.findById(id).orElse(null);
         if (reporteExist != null) {
-            if (reporteExist.getTipo() != null) {
-                reporteExist.setTipo(reporte.getTipo());
-            }
-            if (reporteExist.getFecha() != null) {
-                reporteExist.setFecha(reporte.getFecha());
-            }
-            if (reporteExist.getDescr_report() != null) {
-                reporteExist.setDescr_report(reporte.getDescr_report());
-            }
+            if (reporte.getTipo() != null) {
+                reporteExist.setTipo(reporte.getTipo());}
+            if (reporte.getFecha() != null) {
+                reporteExist.setFecha(reporte.getFecha());}
+            if (reporte.getDescr_report() != null) {
+                reporteExist.setDescr_report(reporte.getDescr_report());}
             reportesRepository.save(reporteExist);
             return reporteExist;
         }
@@ -67,9 +68,8 @@ public class ReportesService {
         List<Reportes> reportes = reportesRepository.findAll();
         if (reportes != null && !reportes.isEmpty()) 
         {
-            return reportes;    
-        } 
-        return null;
+            return reportes;       
+        }
+        return Collections.emptyList();
     }
-    
 }
