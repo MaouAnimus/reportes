@@ -75,11 +75,12 @@ public class ReportesControllerTest {
     }
     @Test
     void testUpdateById() throws Exception {
+        Reportes reporte = new Reportes(1L, "Inventario", LocalDate.parse("2025-06-20"), "Problema con inventario producto", "correo@test.com", 1L , "Ana");
         Reportes actualizado = new Reportes(null, "Actualizado", LocalDate.of(2025, 6, 21), "Nueva descripción", "correo@test.com", 1L, "Ana");
-        Mockito.when(reportesService.updateById(1L, actualizado)).thenReturn(actualizado);
+        Mockito.when(reportesService.updateById(1L, reporte)).thenReturn(actualizado);
         mockMvc.perform(put("/api/reportes/actualizar/1")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(actualizado)))
+                .content(objectMapper.writeValueAsString(reporte)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.tipo").value("Actualizado"))
                 .andExpect(jsonPath("$.fecha").value("2025-06-21"))

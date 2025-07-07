@@ -183,7 +183,6 @@ public class ReportesServiceTest {
 
     Reportes resultado = reportesService.updateById(1L, actualizado);
 
-    // Los campos deben quedar iguales al original
     assertEquals("Original", resultado.getTipo());
     assertEquals(LocalDate.of(2025, 6, 20), resultado.getFecha());
     assertEquals("Descripción original", resultado.getDescr_report());
